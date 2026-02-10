@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Language Translation Tool</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+
+<div class="card">
+  <h2>🌍 Language Translator</h2>
+
+  <textarea id="inputText" placeholder="Type text here..."></textarea>
+
+  <div class="row">
+    <select id="source">
+      <option value="en">English</option>
+      <option value="hi">Hindi</option>
+      <option value="mr">Marathi</option>
+    </select>
+
+    <select id="target">
+      <option value="hi">Hindi</option>
+      <option value="en">English</option>
+      <option value="mr">Marathi</option>
+    </select>
+  </div>
+
+  <button class="primary" onclick="translateText()">Translate</button>
+
+  <textarea id="outputText" placeholder="Translated text..." readonly></textarea>
+
+  <button class="secondary" onclick="speakText()">🔊 Speak</button>
+</div>
+
+<script>
+async function translateText() {
+  const text = document.getElementById("inputText").value;
+  const source = document.getElementById("source").value;
+  const target = document.getElementById("target").value;
+
+  const res = await fetch("/translate", {
+    method: "POST",
+    headers: {"Content-Type": "application/json"},
+    body: JSON.stringify({ text, source, target })
+  });
+
+  const data = await res.json();
+  document.getElementById("outputText").value = data.translatedText;
+}
+
+function speakText() {
+  const text = document.getElementById("outputText").value;
+  const lang = document.getElementById("target").value;
+
+  if (!text) {
+    alert("No text to speak!");
+    return;
+  }
+
+  const speech = new SpeechSynthesisUtterance(text);
+  speech.lang = lang;
+  speech.rate = 0.9;
+
+  window.speechSynthesis.cancel(); // stop previous
+  window.speechSynthesis.speak(speech);
+}
+</script>
+
+</body>
+</html>
