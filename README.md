@@ -1,4 +1,4 @@
-# Language Translation Tool
+<img width="1600" height="900" alt="Screenshot 2026-02-10 222754" src="https://github.com/user-attachments/assets/c8c951fb-93bd-4337-88b0-987509aed32c" /># Language Translation Tool
 
 This is a web-based Language Translation Tool developed using **Python (Flask)**, **HTML**, **CSS**, and **JavaScript**.  
 It allows users to translate text between multiple languages, copy the translated output, and listen to the translated text using text-to-speech.
@@ -68,7 +68,7 @@ Language-Translation/
 ---
 
 ## Screenshots
-![Uploading Screenshot 2026-02-10 222754.png…]()
+![Screenshot](![Uploading Screenshot 2026-02-10 222754.png…]())
 
 ---
 
