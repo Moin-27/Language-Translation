@@ -67,6 +67,11 @@ Language-Translation/
 
 ---
 
+## Screenshots
+![Uploading Screenshot 2026-02-10 222754.png…]()
+
+---
+
 ## Description
 
 This application translates user input text using an online translation API.  
