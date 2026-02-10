@@ -68,7 +68,8 @@ Language-Translation/
 ---
 
 ## Screenshots
-![Screenshot](![Uploading Screenshot 2026-02-10 222754.png…]())
+<img width="1600" height="900" alt="Screenshot 2026-02-10 222754" src="https://github.com/user-attachments/assets/bdf190ed-d044-430c-8f5f-e0b4dbfccf2d" />
+
 
 ---
 
