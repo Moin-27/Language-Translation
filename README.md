@@ -45,13 +45,13 @@ http://127.0.0.1:5000
 ---
 
 ## Project Structure
-
+"
 Language-Translation/
 │
 ├── app.py
 ├── index.html
 └── style.css
-
+"
 ---
 
 ## How It Works
