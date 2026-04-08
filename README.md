@@ -45,13 +45,13 @@ http://127.0.0.1:5000
 ---
 
 ## Project Structure
-
+```
 Language-Translation/
 │
 ├── app.py
 ├── index.html
 └── style.css
-
+```
 ---
 
 ## How It Works
@@ -64,6 +64,12 @@ Language-Translation/
 6. User can:
    - Click **Copy** to copy the translated text.
    - Click **Speak** to listen to the translated text.
+
+---
+
+## Screenshots
+<img width="1600" height="900" alt="Screenshot 2026-02-10 222754" src="https://github.com/user-attachments/assets/bdf190ed-d044-430c-8f5f-e0b4dbfccf2d" />
+
 
 ---
 
