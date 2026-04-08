@@ -5,6 +5,13 @@ It allows users to translate text between multiple languages, copy the translate
 
 ---
 
+## 🚀 Live Demo
+
+Click here to use the application:  
+👉 https://language-translation-ps8x.onrender.com/
+
+---
+
 ## Features
 
 1. Translate text between English, Hindi, and Marathi  
@@ -28,19 +35,6 @@ It allows users to translate text between multiple languages, copy the translate
 
 **API**
 - MyMemory Translation API  
-
----
-
-## How to Run the Project
-
-1. Install required libraries:
-pip install flask requests
-
-2. Run the Python file:
-py app.py
-
-3. Open the browser and go to:
-http://127.0.0.1:5000
 
 ---
 
