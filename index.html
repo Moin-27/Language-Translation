@@ -61,7 +61,7 @@ function speakText() {
   speech.lang = lang;
   speech.rate = 0.9;
 
-  window.speechSynthesis.cancel(); // stop previous
+  window.speechSynthesis.cancel();
   window.speechSynthesis.speak(speech);
 }
 </script>
