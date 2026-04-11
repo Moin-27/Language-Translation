@@ -1,7 +1,7 @@
 # Language Translation Tool
 
 This is a web-based Language Translation Tool developed using **Python (Flask)**, **HTML**, **CSS**, and **JavaScript**.  
-It allows users to translate text between multiple languages, copy the translated output, and listen to the translated text using text-to-speech.
+It allows users to translate text between multiple languages, and listen to the translated text using text-to-speech.
 
 ---
 
@@ -56,7 +56,6 @@ Language-Translation/
 4. Backend processes the translation using an API.
 5. Translated text is displayed on the screen.
 6. User can:
-   - Click **Copy** to copy the translated text.
    - Click **Speak** to listen to the translated text.
 
 ---
@@ -71,7 +70,7 @@ Language-Translation/
 
 This application translates user input text using an online translation API.  
 The backend is handled by Flask, and the frontend is created using HTML, CSS, and JavaScript.  
-After translation, users can copy the translated text or listen to it using the text-to-speech feature.
+After translation, users can listen to it using the text-to-speech feature.
 
 ---
 
