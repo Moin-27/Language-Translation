@@ -79,8 +79,15 @@ function speakText() {
     return;
   }
 
+  // Map simple language codes to proper BCP 47 locale codes for TTS
+  const langMap = {
+    "en": "en-US",
+    "hi": "hi-IN",
+    "mr": "mr-IN"
+  };
+
   const speech = new SpeechSynthesisUtterance(text);
-  speech.lang = lang;
+  speech.lang = langMap[lang] || lang;
   speech.rate = 0.9;
 
   window.speechSynthesis.cancel();
