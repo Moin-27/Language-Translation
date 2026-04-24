@@ -67,8 +67,7 @@ Language-Translation/
 ---
 
 ## Screenshots
-<img width="1600" height="900" alt="Screenshot 2026-02-10 222754" src="https://github.com/user-attachments/assets/bdf190ed-d044-430c-8f5f-e0b4dbfccf2d" />
-
+<img width="1600" height="788" alt="image" src="https://github.com/user-attachments/assets/4db4b0c1-f9a4-407b-bd0b-684e879bc0da" />
 
 ---
 
