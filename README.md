@@ -1,7 +1,7 @@
 # Language Translation Tool
 
 This is a web-based Language Translation Tool developed using **Python (Flask)**, **HTML**, **CSS**, and **JavaScript**.  
-It allows users to translate text between multiple languages, and listen to the translated text using text-to-speech.
+It allows users to translate text between multiple languages using **Google Translate**, and listen to the translated text using text-to-speech.
 
 ---
 
@@ -15,10 +15,12 @@ Click here to use the application:
 ## Features
 
 1. Translate text between English, Hindi, and Marathi  
-2. Simple, clean, and modern user interface  
-3. Prevents selecting the same source and target language  
-4. Copy translated text using a button  
+2. Accurate translations powered by **Google Translate**  
+3. Animated wave background (Vanta.js) with glassmorphism UI  
+4. Client-side & server-side **caching** for instant repeat translations  
 5. Text-to-speech feature for translated text  
+6. **Ctrl+Enter** keyboard shortcut for quick translation  
+7. Loading states and error handling  
 
 ---
 
@@ -33,8 +35,10 @@ Click here to use the application:
 1. Python  
 2. Flask  
 
-**API**
-- MyMemory Translation API  
+**API / Libraries**
+- Google Translate (via `deep-translator`)  
+- Vanta.js (animated wave background)  
+- Three.js (3D rendering for Vanta)  
 
 ---
 
@@ -42,9 +46,11 @@ Click here to use the application:
 ```
 Language-Translation/
 │
-├── app.py
-├── index.html
-└── style.css
+├── app.py          # Flask backend with Google Translate
+├── index.html      # Frontend UI
+├── script.js       # Translation logic + Vanta.js wave init
+├── style.css       # Glassmorphism dark theme
+└── README.md
 ```
 ---
 
@@ -68,9 +74,9 @@ Language-Translation/
 
 ## Description
 
-This application translates user input text using an online translation API.  
+This application translates user input text using **Google Translate** (via deep-translator library).  
 The backend is handled by Flask, and the frontend is created using HTML, CSS, and JavaScript.  
-After translation, users can listen to it using the text-to-speech feature.
+Features an animated wave background (Vanta.js), glassmorphism card design, translation caching for speed, and text-to-speech.
 
 ---
 
