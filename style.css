@@ -1,33 +1,81 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Background — animated gradient matching SkillBridge */
 body {
-  background: linear-gradient(135deg, #667eea, #764ba2);
-  font-family: "Segoe UI", sans-serif;
   height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
+  background: linear-gradient(270deg, #0f2027, #203a43, #2c5364, #1e3c72, #2a5298);
+  background-size: 800% 800%;
+  animation: gradientBG 18s ease infinite;
+  color: #fff;
 }
 
+@keyframes gradientBG {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Glassmorphism Card */
 .card {
-  background: #ffffff;
-  width: 420px;
-  padding: 25px;
-  border-radius: 16px;
-  box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  width: 440px;
+  padding: 30px;
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+  animation: fadeIn 1s ease forwards;
+  opacity: 0;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 h2 {
   text-align: center;
-  margin-bottom: 15px;
+  margin-bottom: 18px;
+  color: #fff;
+  font-size: 1.5rem;
 }
 
 textarea {
   width: 100%;
   height: 90px;
-  padding: 10px;
-  border-radius: 10px;
-  border: 1px solid #ddd;
+  padding: 12px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
   margin-bottom: 12px;
   resize: none;
+  background: rgba(255, 255, 255, 0.08);
+  color: #fff;
+  font-size: 14px;
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+
+textarea::placeholder {
+  color: rgba(255, 255, 255, 0.45);
+}
+
+textarea:focus {
+  border-color: rgba(0, 120, 255, 0.6);
 }
 
 .row {
@@ -38,34 +86,57 @@ textarea {
 
 select {
   flex: 1;
-  padding: 8px;
-  border-radius: 8px;
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+  font-size: 14px;
+  outline: none;
+  cursor: pointer;
+}
+
+select option {
+  background: #1e3c72;
+  color: #fff;
 }
 
 button {
   width: 100%;
-  padding: 10px;
-  border-radius: 10px;
+  padding: 12px;
+  border-radius: 12px;
   border: none;
   cursor: pointer;
   font-size: 15px;
+  font-weight: 600;
   margin-top: 8px;
+  transition: background 0.3s ease, opacity 0.2s ease, transform 0.15s ease;
+}
+
+button:active {
+  transform: scale(0.97);
+}
+
+button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
 }
 
 .primary {
-  background: #667eea;
+  background: #0078ff;
   color: white;
 }
 
 .primary:hover {
-  background: #5a6fd6;
+  background: #005fcc;
 }
 
 .secondary {
-  background: #222;
+  background: rgba(255, 255, 255, 0.12);
   color: white;
+  border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 .secondary:hover {
-  background: #000;
+  background: rgba(255, 255, 255, 0.2);
 }

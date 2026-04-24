@@ -1,6 +1,8 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Language Translation Tool</title>
   <link rel="stylesheet" href="/style.css">
 </head>
@@ -32,39 +34,11 @@
   <button class="secondary" onclick="speakText()">🔊 Speak</button>
 </div>
 
-<script>
-async function translateText() {
-  const text = document.getElementById("inputText").value;
-  const source = document.getElementById("source").value;
-  const target = document.getElementById("target").value;
+<!-- Background Wave Animation (same as SkillBridge) -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vanta/dist/vanta.waves.min.js"></script>
 
-  const res = await fetch("/translate", {
-    method: "POST",
-    headers: {"Content-Type": "application/json"},
-    body: JSON.stringify({ text, source, target })
-  });
-
-  const data = await res.json();
-  document.getElementById("outputText").value = data.translatedText;
-}
-
-function speakText() {
-  const text = document.getElementById("outputText").value;
-  const lang = document.getElementById("target").value;
-
-  if (!text) {
-    alert("No text to speak!");
-    return;
-  }
-
-  const speech = new SpeechSynthesisUtterance(text);
-  speech.lang = lang;
-  speech.rate = 0.9;
-
-  window.speechSynthesis.cancel();
-  window.speechSynthesis.speak(speech);
-}
-</script>
+<script src="/script.js"></script>
 
 </body>
 </html>
