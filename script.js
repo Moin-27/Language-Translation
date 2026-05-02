@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", () => {
       el: "body",
       mouseControls: true,
       touchControls: true,
-      gyroControls: false,
+      gyroControls: true,       // ✅ Phone hilao → waves hilti hain
       minHeight: 200.00,
       minWidth: 200.00,
       scale: 1.00,
@@ -15,6 +15,65 @@ document.addEventListener("DOMContentLoaded", () => {
       waveHeight: 15.00,
       waveSpeed: 0.60,
       zoom: 0.90
+    });
+  }
+
+  // ---------- iOS 13+ Gyroscope Permission ----------
+  // Safari requires explicit user permission before accessing DeviceOrientationEvent
+  const isMobile = /Mobi|Android|iPhone|iPad/i.test(navigator.userAgent);
+  const needsPermission =
+    isMobile &&
+    typeof DeviceOrientationEvent !== "undefined" &&
+    typeof DeviceOrientationEvent.requestPermission === "function";
+
+  if (needsPermission) {
+    // Create a floating permission button (shown only on iOS Safari)
+    const permBtn = document.createElement("button");
+    permBtn.id = "gyro-permission-btn";
+    permBtn.textContent = "🌊 Enable Motion";
+    permBtn.style.cssText = `
+      position: fixed;
+      bottom: 24px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 9999;
+      padding: 12px 28px;
+      background: rgba(0, 120, 255, 0.85);
+      color: #fff;
+      border: none;
+      border-radius: 30px;
+      font-size: 15px;
+      font-weight: 700;
+      cursor: pointer;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 4px 20px rgba(0, 120, 255, 0.5);
+      animation: pulse 1.8s ease infinite;
+    `;
+    document.body.appendChild(permBtn);
+
+    // Pulse animation for the button
+    const style = document.createElement("style");
+    style.textContent = `
+      @keyframes pulse {
+        0%, 100% { box-shadow: 0 4px 20px rgba(0,120,255,0.5); }
+        50% { box-shadow: 0 4px 36px rgba(0,180,255,0.9); }
+      }
+    `;
+    document.head.appendChild(style);
+
+    permBtn.addEventListener("click", async () => {
+      try {
+        const response = await DeviceOrientationEvent.requestPermission();
+        if (response === "granted") {
+          permBtn.remove(); // Permission granted — button hatao
+        } else {
+          permBtn.textContent = "❌ Permission Denied";
+          setTimeout(() => permBtn.remove(), 2000);
+        }
+      } catch (err) {
+        console.warn("Gyro permission error:", err);
+        permBtn.remove();
+      }
     });
   }
 });
