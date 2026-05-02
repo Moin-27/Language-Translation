@@ -1,11 +1,11 @@
-// ---------- Vanta.js Wave Background ----------
+// ---------- Vanta.js Wave Background (same as SkillBridge) ----------
 document.addEventListener("DOMContentLoaded", () => {
   if (typeof VANTA !== "undefined") {
     VANTA.WAVES({
       el: "body",
-      mouseControls: true,   // Desktop: mouse se waves hilti hain
+      mouseControls: true,
       touchControls: true,
-      gyroControls: false,   // Manual gyro handle karenge neeche (more reliable)
+      gyroControls: false,
       minHeight: 200.00,
       minWidth: 200.00,
       scale: 1.00,
@@ -16,98 +16,6 @@ document.addEventListener("DOMContentLoaded", () => {
       waveSpeed: 0.60,
       zoom: 0.90
     });
-  }
-
-  // ---------- Manual Gyroscope → Fake MouseMove (Android + iOS) ----------
-  // Vanta's built-in gyroControls is buggy. Better approach:
-  // listen to deviceorientation and convert tilt into synthetic mousemove events
-  // that Vanta's mouseControls handles perfectly.
-
-  function attachGyroListener() {
-    window.addEventListener("deviceorientation", (event) => {
-      const beta  = event.beta;   // Tilt front/back: -180 to 180
-      const gamma = event.gamma;  // Tilt left/right: -90 to 90
-
-      if (beta === null || gamma === null) return;
-
-      // Map tilt angles to screen coordinates
-      // gamma: -90..90  → 0..screenWidth
-      // beta:  -90..90  → 0..screenHeight  (clamp to ±90 for natural feel)
-      const clampedBeta  = Math.max(-90, Math.min(90, beta));
-      const x = ((gamma + 90) / 180) * window.innerWidth;
-      const y = ((clampedBeta + 90) / 180) * window.innerHeight;
-
-      // Dispatch synthetic mousemove — Vanta picks this up automatically
-      document.dispatchEvent(new MouseEvent("mousemove", {
-        clientX: x,
-        clientY: y,
-        bubbles: true
-      }));
-    });
-  }
-
-  const isMobile = /Mobi|Android|iPhone|iPad/i.test(navigator.userAgent);
-  if (!isMobile) return; // Desktop pe gyro ki zaroorat nahi
-
-  // ---- iOS 13+ needs explicit permission (Safari) ----
-  if (
-    typeof DeviceOrientationEvent !== "undefined" &&
-    typeof DeviceOrientationEvent.requestPermission === "function"
-  ) {
-    // Show a tappable button — iOS requires a user gesture to grant permission
-    const permBtn = document.createElement("button");
-    permBtn.id = "gyro-permission-btn";
-    permBtn.textContent = "🌊 Enable Motion Effects";
-
-    const pulseStyle = document.createElement("style");
-    pulseStyle.textContent = `
-      @keyframes gyro-pulse {
-        0%, 100% { box-shadow: 0 4px 24px rgba(0,120,255,0.55); }
-        50%       { box-shadow: 0 4px 40px rgba(0,180,255,0.95); }
-      }
-      #gyro-permission-btn {
-        position: fixed;
-        bottom: 28px;
-        left: 50%;
-        transform: translateX(-50%);
-        z-index: 9999;
-        padding: 13px 30px;
-        background: rgba(0, 120, 255, 0.88);
-        color: #fff;
-        border: none;
-        border-radius: 32px;
-        font-size: 15px;
-        font-weight: 700;
-        cursor: pointer;
-        backdrop-filter: blur(12px);
-        -webkit-backdrop-filter: blur(12px);
-        animation: gyro-pulse 1.8s ease infinite;
-        white-space: nowrap;
-      }
-    `;
-    document.head.appendChild(pulseStyle);
-    document.body.appendChild(permBtn);
-
-    permBtn.addEventListener("click", async () => {
-      try {
-        const result = await DeviceOrientationEvent.requestPermission();
-        if (result === "granted") {
-          attachGyroListener();         // ✅ Listener lagao
-          permBtn.textContent = "✅ Motion Enabled!";
-          setTimeout(() => permBtn.remove(), 1500);
-        } else {
-          permBtn.textContent = "❌ Permission Denied";
-          setTimeout(() => permBtn.remove(), 2000);
-        }
-      } catch (err) {
-        console.warn("Gyro permission error:", err);
-        permBtn.remove();
-      }
-    });
-
-  } else {
-    // ---- Android Chrome — permission needed nahi, seedha attach karo ----
-    attachGyroListener();
   }
 });
 
