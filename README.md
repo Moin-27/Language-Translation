@@ -88,9 +88,9 @@ Language-Translation/
    git clone https://github.com/Moin-27/Language-Translation.git
    cd Language-Translation
    ```
-2. Install dependencies:
+2. Install required dependencies:
    ```bash
-   pip install -r requirements.txt
+   pip install flask deep-translator
    ```
 3. Run the application:
    ```bash
